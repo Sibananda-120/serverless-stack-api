@@ -7,7 +7,7 @@ export const main = handler(async (event, context) => {
     const params = {
         TableName: process.env.tableName, // Ensure tableName environment variable is defined
         Item: {
-            userId: "123", // The id of the author
+            userId: event.requestContext.identity.cognitoIdentityId, // The id of the
             noteId: uuid.v1(), // A unique uuid
             content: data.content, // Parsed from request body
             attachment: data.attachment, // Parsed from request body
